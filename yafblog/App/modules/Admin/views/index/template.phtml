@@ -1,0 +1,116 @@
+<?php $this->display("public/header.phtml");?>
+
+
+<div id="main">
+   
+        <?php $this->display("public/menu.phtml");?>
+
+        <div id="content">
+                <div id="crumbs">
+                                                       当前位置: <span>主题管理</span>
+                </div>
+     
+                 <div id="page-menu">
+                  
+					<a href="/<?php echo ADMIN_NAME;?>/index/postCategory"> 
+					<span>
+					安装主题
+					 <span>
+					</span></span></a>
+					
+					
+                  </div>
+                
+                <?php 
+                
+                 if(isset($data)){
+                     	
+                ?>
+                 <table class="table">
+                  <thead>
+                    <tr>
+                     
+                      <th>分类名称</th>
+               
+                    </tr>
+                  </thead>
+                  <tbody>
+
+		            <?php 
+				
+		            
+		               foreach($data as $row){
+		              
+					  
+		            ?>
+						<tr>
+						
+						  <td  style="text-align: left" >
+						  
+						  <img width='100' height='80' src="<?php echo APP_PATH.'template/'.$row['dirname'].'/preview.png';?>" onclick="window.open('<?php echo APP_PATH.'template/'.$row['dirname'].'/preview.png';?>')">
+						  
+						  <?php echo $row['ThemeName']?>
+					  
+						  </td>
+					  
+						   <td>
+						   
+						   <a href="/<?php echo ADMIN_NAME?>/index/template/act/enable/id/<?echo $_row['id']?>">[ 启用 ]</a> / 
+							   <a href="/<?php echo ADMIN_NAME?>/index/template/act/uninstall/id/<?echo $_row['id']?>">[ 卸载 ]</a> 
+							   
+						   </td>
+						</tr>
+                    
+                      <?php 
+		                  
+		                  }
+		                  
+                      ?>  
+
+              
+                  </tbody>
+                </table>
+                
+                
+	            <?php 
+	       
+	                
+	                
+	            }else{
+	            	
+	            	echo "<div class='message'>暂无主题.</div>";
+	            	
+	            }
+	            
+	            ?>
+			    
+                
+                 
+            <?php 
+            
+            //分页
+            if(isset($pages)){
+            
+            ?>
+              <div class="pagination">
+              
+                 <?php 
+                 
+                 
+                 echo $pages;
+                 
+                 ?>
+                  
+              </div>
+            <?php 
+       
+            }
+            
+            ?>
+                            
+     </div>
+      
+     
+    </div>
+    
+  <?php $this->display("public/footer.phtml");?>

@@ -1,0 +1,131 @@
+<?php $this->display("public/header.phtml");?>
+    
+<div id="main">
+
+       
+       <?php $this->display("public/menu.phtml");?>
+       
+       
+        <div id="content">
+                <div id="crumbs">
+                                                       当前位置: <span>后台首页</span> 
+                </div>
+            
+            <table class="table">
+			    <tbody>
+			        <tr class="color1">
+			            <th scope="col" colspan="4">
+			                &nbsp;站内统计摘要&nbsp;
+			       
+			            </th>
+			        </tr>
+			     
+			     
+			        <tr class="color3">
+			         
+			            <td class="td20">
+			                当前版本
+			            </td>
+			            <td class="td30">
+			                <?php 
+			                
+			                echo VERSION;
+			                
+			                if(isset($data)){
+			                	
+								if(VERSION !== $data['version']){
+								  
+								
+			                ?>
+			                
+			                
+			                    <a href="http://www.php0.net/">【发现新版本(<?php echo $data['version']?>)】</a>
+			                
+			                <?php 	
+								}
+			                }
+			                ?>
+			            </td>
+			            
+			        </tr>
+			        
+			        
+			        <tr class="color2">
+			            <td class="td20">
+			                文章总数
+			            </td>
+			            <td>
+			              <?php echo $num;?>
+			            </td>
+			   
+			        </tr>
+
+			        <tr class="color3">
+			            <td class="td20">
+			                当前主题/当前样式
+			            </td>
+			            <td>
+			                 <?php echo load_config('system','template')?>
+			            </td>
+			    
+			        </tr>
+			       <tr class="color2">
+			        
+			            <td>
+			                系统环境
+			            </td>
+			            <td>
+			              <?php echo  php_uname('s')?>/
+			              <?php echo   php_sapi_name()?>/MYSQL
+			              /PHP <?php echo PHP_VERSION?>
+			            </td>
+			            
+			        </tr>
+			    </tbody>
+			</table>
+			
+		   <?php 
+		   
+		     if(isset($data['dev'])){
+		     	
+		   ?>
+			<h1>:)开发人员</h1>
+		   <div class="index-list">
+		         
+		       
+		         <?php 
+		       
+			         foreach($data['dev'] as $user){
+			         
+			         ?>
+				         <div class="user">
+				                        
+		                        <div class="avatar">
+		                            <img width="45" heigth="59" src="<?php echo $user['Avatar']?>" />
+		                        </div>
+		                        
+		                        <div class="position">
+		                             <?php echo $user['position']?>
+		                        </div>
+		                        <div  class="nickname" >
+		                           <a href="<?php echo $user['site']?>" title="<?php echo $user['nickname']?>"><?php echo $user['nickname']?></a>
+		                        </div>
+				         </div>  
+			         <?php 
+			         
+			         }
+		       
+		         ?>
+		           
+		   </div>
+		   <?php 
+		     }
+		   ?>
+  
+     </div>
+
+
+
+    </div>
+    
+  <?php $this->display("public/footer.phtml");?>

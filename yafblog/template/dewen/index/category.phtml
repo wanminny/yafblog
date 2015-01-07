@@ -1,0 +1,83 @@
+<?php $this->display("public/header.phtml");?>
+ <div id="root"> 
+        <div id="content">
+         <div class="post">
+         
+         
+            <?php 
+            
+            if(isset($data)){
+            
+                foreach($data as $row){
+            	
+              
+            ?>
+              <div class="list">
+                 
+                      <span class="title"><h2><a href="/index/index/show/id/<?php echo $row['ID']?>" title="<?php echo $row['post_title']?>"><?php echo $row['post_title']?></a></h2></span>
+                    
+                      <div class="meta">Write by admin in 
+                    
+                      <?php 
+                           
+                      foreach($cat_info[$row['ID']] as $r){
+                      
+                      ?>
+                      
+                           <a rel="category tag" title="<?php echo $r['name']?>" href="/Index/index/category/id/<?php echo $r['term_id']?>"><?php echo $r['name']?></a>,
+                     <?php 
+                      }
+                      
+                      ?> at <?php echo $row['post_date']?> 
+                      </div>
+                       
+                   
+                 
+              </div>
+              
+           <?php 
+       
+                }
+                
+            }else{
+            	
+            	echo "<div class='message'>暂无文章</div>";
+            	
+            }
+
+            ?>
+    
+            
+            
+            
+            <?php 
+            
+            //分页
+            if(isset($pages)){
+            
+            ?>
+              <div class="pagination">
+              
+                 <?php 
+                 
+                 
+                 echo $pages;
+                 
+                 ?>
+                  
+              </div>
+            <?php 
+       
+            }
+            
+            ?>
+            
+          </div>
+          
+
+               
+          <?php $this->display("public/sidebar.phtml");?>
+       
+    </div>
+ </div>  
+  <?php $this->display("public/footer.phtml");?>

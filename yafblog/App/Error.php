@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+提示 -  Powered by YafBlog!
+</title>
+<style>
+
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, lengend, button, input, textarea, th, td,table {  margin: 10px; padding: 0;border: 0;outline: 0;	font-size: 100%;vertical-align: baseline;-webkit-text-size-adjust:none;color:#6e6e6e;}
+h1, h2, h3{font-family:microsoft yahei,Arial,Helvetica,sans-serif;;}
+p{font-family:'Arial';}
+body,button, input, select, textarea,li,p,span { font: 12px/1 Arial,Helvetica,sans-serif; line-height:125%;}
+h1 { font-size: 18px;  }
+h2 { font-size: 16px; }
+h3 { font-size: 14px; }
+h4, h5, h6 { font-size: 100%; }
+p, h4, h5, h6{line-height:1.6em;}
+address, cite, dfn, em, var, i { font-style: normal; -webkit-text-size-adjust:none} 
+code, kbd, pre, samp, tt { font-family: "Courier New", Courier, monospace; } 
+small { font-size: 12px; } 
+ul, ol { list-style: none; }
+a { text-decoration: none; cursor:pointer;color: #3377AA;}
+a:hover { text-decoration: none; color:#fb7a33;}
+abbr[title], acronym[title] { 	border-bottom: 1px dotted;	cursor: help;}
+q:before, q:after { content: ''; }
+legend { color: #000; } 
+fieldset, img { border: none; } 
+button, input, select, textarea {    font-size: 100%; }
+table {	border-collapse: collapse;	border-spacing: 0;}
+hr {    border: none;    height: 1px;}
+.clear{clear:both;}
+.clear:after {content:".";height:0px;line-height:0px;visibility:hidden;clear:both;}
+.clearfix:after {display:block;	clear:both;	visibility:hidden;}
+.clearfix {display:inline-block;}
+
+#debug{
+    margin: 50px auto auto;
+    text-align: center;
+    width: 500px;
+	border: 1px solid #3377AA;
+    
+}
+
+.error{
+    background: none repeat scroll 0 0 #3377AA;
+    color: #FFFFFF;
+    font-weight: 900;
+    height: 27px;
+    padding-top: 8px;
+}
+
+
+.error-content{
+
+	font-size:12px;
+	padding:10px;
+}
+
+
+#footer{
+    background: none repeat scroll 0 0 #FFFFFF;
+    bottom: 0;
+    font-size: 12px;
+    margin: auto;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}
+</style>
+
+
+<script>
+
+function redirect(url) {
+	location.href = url;
+}
+
+</script>
+
+</head>
+<body>
+    <div id="debug">
+	
+	    <div class="error">提示</div>
+	
+	    <div class="error-content"><?php echo $msg;?>
+	    
+	    
+	       <?php if ($url_forward=='goback' || $url_forward==''){?>
+	     
+			<a href="javascript:history.back();" >[点这里返回上一页]</a>
+			
+			<?php }elseif($url_forward=="close"){?>
+			<input type="button" name="close" value=" 关闭 " onClick="window.close();">
+			<?php }elseif($url_forward=="blank"){
+				
+			}elseif($url_forward){
+				
+			?>
+			<a href="<?php echo $url_forward;?>">如果您的浏览器没有自动跳转，请点击这里</a>
+			<script language="javascript">setTimeout("redirect('<?php echo $url_forward;?>');",<?php echo $ms;?>);</script> 
+		    <?php 
+			}
+			?>
+	    
+	    </div>
+	
+	</div>
+	
+	<div id="footer">
+
+	<p><a href="http://www.yafblog.com">YafBlog</a> &copy; Copyright 2014 - 由<strong>Yaf框架</strong>强力驱动</p>
+	
+	<p>Themes Design by <em>Yafblog</em>.Powered by Yafblog <?php echo VERSION?></p>
+	
+    </div>
+</body>
+</html>

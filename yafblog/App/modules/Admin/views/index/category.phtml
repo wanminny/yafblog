@@ -1,0 +1,111 @@
+<?php $this->display("public/header.phtml");?>
+
+
+<div id="main">
+   
+        <?php $this->display("public/menu.phtml");?>
+
+        <div id="content">
+                <div id="crumbs">
+                                                       当前位置: <span>分类列表</span>
+                </div>
+     
+                 <div id="page-menu">
+                  
+					<a href="/<?php echo ADMIN_NAME;?>/index/postCategory"> 
+					<span>
+					添加分类
+					 <span>
+					</span></span></a>
+					
+					
+                  </div>
+                
+                <?php 
+                
+                 if(isset($data)){
+                     	
+                ?>
+                 <table class="table">
+                  <thead>
+                    <tr>
+                     
+                      <th>分类名称</th>
+               
+                    </tr>
+                  </thead>
+                  <tbody>
+
+		            <?php 
+		            
+		               foreach($data as $row){
+		               
+		            
+		            ?>
+			                    <tr>
+			                    
+			                      <td  style="text-align: left" ><a href="/<?php echo ADMIN_NAME?>/index/postCategory/id/<?php echo $row['term_id']?>"><?php echo $row['name']?></a> 
+			                  
+			                      </td>
+			                  
+			                       <td>
+			                       
+			                           <a href="/<?php echo ADMIN_NAME?>/index/postCategory/id/<?php echo $row['term_id']?>">[ 编辑 ]</a> / 
+			                           <a href="/<?php echo ADMIN_NAME?>/index/delCategory/id/<?php echo $row['term_id']?>">[ 删除 ]</a> 
+			                           
+			                       </td>
+			                    </tr>
+                    
+                      <?php 
+		                  
+		                  }
+		                  
+                      ?>  
+
+              
+                  </tbody>
+                </table>
+                
+                
+	            <?php 
+	       
+	                
+	                
+	            }else{
+	            	
+	            	echo "<div class='message'>暂无文章.</div>";
+	            	
+	            }
+	            
+	            ?>
+			    
+                
+                 
+            <?php 
+            
+            //分页
+            if(isset($pages)){
+            
+            ?>
+              <div class="pagination">
+              
+                 <?php 
+                 
+                 
+                 echo $pages;
+                 
+                 ?>
+                  
+              </div>
+            <?php 
+       
+            }
+            
+            ?>
+                            
+     </div>
+      
+     
+    </div>
+    
+  <?php $this->display("public/footer.phtml");?>

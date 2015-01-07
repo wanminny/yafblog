@@ -1,0 +1,67 @@
+<?php $this->display("public/header.phtml");?>
+    
+<div id="main">
+        
+       <?php $this->display("public/menu.phtml");?>
+        <div id="content">
+        
+		                 <div id="crumbs">
+		                                                       当前位置: <span>系统设置</span> 
+		                </div>
+        
+                        <form action="/<?php echo ADMIN_NAME;?>/index/system/" method="post" >
+                        
+                        <div class="lefts">
+                        
+					 	<table>
+					    <?php 
+					    
+						    $config = load_config('system');
+						    
+						    foreach($config as $name=>$val){
+						    				  
+						    ?>
+	
+							      <tr>
+							      
+							      <td> 
+							      <?php 
+							      $from = load_config('system_from',$name);
+							      echo  $from['name'];
+							      ?> 
+							      </td>
+							      
+							      <td> 
+								    <input type="text" name="<?php echo $name?>" value="<?php echo $val?>" class="system-input"  /> <?php echo $from['annotat']?>
+								  </td>
+	
+							      
+							      </tr>
+	
+							
+						<?php 
+						    }
+						?>
+						
+						</table>
+				
+							
+  
+                         
+                    
+                         <div class="input-w">
+                                     <input type="submit" value="提交" class="post-button"/>
+                         </div>
+                         
+                         
+                         </form>
+                         
+                        
+                            
+                            
+       </div>
+
+   
+    </div>
+    
+  <?php $this->display("public/footer.phtml");?>

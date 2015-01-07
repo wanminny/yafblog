@@ -1,0 +1,166 @@
+<?php $this->display("public/header.phtml");?>
+    
+<script type="text/javascript" charset="utf-8" src="<?php echo ADMIN_STATIC_PATH;?>js/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="<?php echo ADMIN_STATIC_PATH;?>js/ueditor/ueditor.all.min.js"> </script>
+<!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+<!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+<script type="text/javascript" charset="utf-8" src="<?php echo ADMIN_STATIC_PATH;?>js/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+
+<div id="main">
+        
+       <?php $this->display("public/menu.phtml");?>
+        <div id="content">
+        
+		                 <div id="crumbs">当前位置: <span>
+                                                       <?php 
+                                                       
+                                                       
+                                                       if(isset($id) && $id){
+                                                       	
+                                                       	   echo "编辑文章";
+                                                       	
+                                                       }else{
+                                                       	  
+                                                       	   echo "发布文章";
+                                                       	
+                                                       }
+                                                       
+                                                       ?>
+                                                       </span> 
+		                </div>
+        
+                        <form action="/<?php echo ADMIN_NAME;?>/index/post/" method="post" >
+                        
+                        <div class="lefts">
+                        
+                             <div class="input-w">
+	                             
+	                                     <input type="text" name="post_title" value="<?php if(isset($r) && $r['post_title']){ echo $r['post_title']; } ?>" class="post-title" placeholder="在此键入标题" /> 
+									    <?php 
+                                         
+										if(isset($id) && $id){
+										?>
+										
+										 <b> <a href="/index/index/show/id/<?php echo $id;?>" target="_bank">[查看已发布后的文章]</a></b>
+										
+										<?php
+										 }
+										 ?>
+                             </div>
+                             
+                             <div class="input-w">
+	                             
+	                       
+                                <?php 
+	 
+								 $CatM  = new CategoryModel(); 
+								 $data  = $CatM->getCategory();
+								 
+								 if($data){
+
+								 	 foreach ($data as $cat){
+									 
+									 ?>
+		                               <label>
+		                                <?php
+		                                
+			                                if(isset($arrcat)){
+			                                	
+				                                if(in_array($cat['term_id'],$arrcat)){
+				                          
+				                                	 echo "<input name=\"post_cat[]\" type=\"checkbox\" checked=\"checked\" value=\"{$cat['term_id']}\" /><b style='color:#3377AA' >{$cat['name']}</b>";
+				                                }else{
+				                                	
+				                                	 echo "<input name=\"post_cat[]\" type=\"checkbox\"  value=\"{$cat['term_id']}\" />{$cat['name']}";
+				                  
+				                                }
+
+			                                }else{
+
+			                                	echo "<input name=\"post_cat[]\" type=\"checkbox\"  value=\"{$cat['term_id']}\" />{$cat['name']}";
+				                         	
+				                            } 
+		                                ?>
+                                          
+                                
+										</label>  &nbsp;&nbsp; &nbsp;  &nbsp;&nbsp; &nbsp; 
+	
+	                                 <?php 
+	
+									 }
+									 
+								 }else{
+
+								 ?>
+								 
+								 	<a href="/<?php echo ADMIN_NAME?>/index/category">快去创建一个栏目吧</a>
+								 
+								 <?php 
+								 	
+								 }
+							
+						
+								 ?>
+                             </div>
+                             
+                             <div class="input-w">
+                             
+                                 <script id="editor" type="text/plain" style="width:100%;height:290px;">
+                                          
+                                           <?php 
+                                           
+	                                           if(isset($r) && $r['post_content']){
+	                                                echo $r['post_content'];
+	                                           }
+	                                           
+                                           ?>
+
+                                 </script>
+                              
+                             </div>
+                      
+                         </div>
+                         
+                     
+                         
+                         <div class="input-w">
+
+                                     <input type="submit" value="发布" class="post-button"/>
+
+                         </div>
+                         
+                         <input type="hidden" name="action" value=" <?php 
+                                                       
+                                                       
+                                                       if(isset($id) && $id){
+                                                       	
+                                                       	   echo "edit";
+                                                       	
+                                                       }else{
+                                                       	  
+                                                       	   echo "add";
+                                                       	
+                                                       }
+                                                       
+                                                       ?>">
+                                                       
+                         <input type="hidden" name="post_id" value=" <?php echo isset($id) && $id?$id:0?>">
+                         </form>
+                         
+                         </br>
+                            
+                            
+       </div>
+       
+       <script>
+	     //文件保存路径
+         window.UEDITOR_CONFIG.savePath = ['<?php echo UPLOAD_FILE_PATH?>'];
+         //文件访问路径
+		 window.UEDITOR_CONFIG.imagePath = '<?php echo UPLOAD_FILE_URL?>';
+         UE.getEditor('editor');
+       </script> 
+   
+    </div>
+    
+  <?php $this->display("public/footer.phtml");?>

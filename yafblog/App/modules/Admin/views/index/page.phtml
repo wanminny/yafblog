@@ -1,0 +1,116 @@
+<?php $this->display("public/header.phtml");?>
+
+
+<div id="main">
+   
+        <?php $this->display("public/menu.phtml");?>
+
+        <div id="content">
+                <div id="crumbs">
+                                                       当前位置: <span>页面列表</span>
+                </div>
+       
+                
+                <div id="page-menu">
+                  
+					<a href="/<?php echo ADMIN_NAME?>/index/postPage"> 
+					<span>
+					添加页面
+					 <span>
+					</a>
+					
+					
+                </div>
+                
+                <?php 
+                
+                 if(isset($data)){
+                     	
+                ?>
+                 <table class="table">
+                  <thead>
+                    <tr>
+                     
+                      <th>标题</th>
+                      <th>作者</th>
+
+                       <th>日期</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+		            <?php 
+		            
+		               foreach($data as $row){
+		            
+		            ?>
+			                    <tr>
+			                    
+			                      <td><a href="/<?php echo ADMIN_NAME?>/index/postPage/id/<?php echo $row['ID']?>"><?php echo $row['post_title']?></a> 
+			                  
+			                      </td>
+			                      <td><?php echo getAuthor(1);?></td>
+			                      
+			                   
+			                       <td><?php echo $row['post_date']?></td>
+			                       <td>
+			                       
+			                           <a href="/<?php echo ADMIN_NAME?>/index/postPage/id/<?php echo $row['ID']?>">[ 编辑 ]</a> / 
+			                           <a href="/<?php echo ADMIN_NAME?>/index/del/id/<?php echo $row['ID']?>">[ 删除 ]</a> 
+			                           
+			                       </td>
+			                    </tr>
+                    
+                      <?php 
+		                  
+		                  }
+		                  
+                      ?>  
+
+              
+                  </tbody>
+                </table>
+                
+                
+	            <?php 
+	       
+	                
+	                
+	            }else{
+	            	
+	            	echo "<div class='message'>暂无页面.</div>";
+	            	
+	            }
+	            
+	            ?>
+			    
+                
+                 
+            <?php 
+            
+            //分页
+            if(isset($pages)){
+            
+            ?>
+              <div class="pagination">
+              
+                 <?php 
+                 
+                 
+                 echo $pages;
+                 
+                 ?>
+                  
+              </div>
+            <?php 
+       
+            }
+            
+            ?>
+                            
+     </div>
+      
+     
+    </div>
+    
+  <?php $this->display("public/footer.phtml");?>

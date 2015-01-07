@@ -1,0 +1,86 @@
+ <div id="menu">
+	             
+	            
+	                
+                    <?php 
+	                
+	                    $act  = $request = Yaf_Dispatcher::getInstance()->getRequest()->action;
+	               
+	                ?> 
+	                <ul id="leftmenu">
+	                
+	                    <li  <?php 
+		                        if(in_array($act,array('index'))){ 
+		                    	   echo 'class="curr"';
+		                        }
+	                        ?> >
+	                        <a href="/<?php echo ADMIN_NAME;?>/index/index" >
+	                             <span>
+	                                                                              后台首页
+	                            </span>
+	                        </a>
+	                    </li>
+	                    
+
+	                    <li  <?php 
+		                        if(in_array($act,array('post'))){ 
+		                    	   echo 'class="curr"';
+		                        }
+	                        ?> >
+	                        <a href="/<?php echo ADMIN_NAME;?>/index/post" >
+	                             <span>
+	                                                                              新建文章
+	                            </span>
+	                        </a>
+	                    </li>
+	                
+	                    <li <?php 
+		                        if(in_array($act,array('list'))){ 
+		                    	   echo 'class="curr"';
+		                        }
+	                        ?>  >
+	                        <a href="/<?php echo ADMIN_NAME;?>/index/list" >
+	                               <span>
+	                                                                            管理文章
+	                            </span>
+	                        </a>
+	                    </li>
+	                    
+	                     <li <?php 
+		                        if(in_array($act,array('page','postpage'))){ 
+		                    	   echo 'class="curr"';
+		                        }
+	                        ?> >
+	                        <a href="/<?php echo ADMIN_NAME;?>/index/page" >
+	                               <span>
+	                                                                           页面管理
+	                            </span>
+	                        </a>
+	                    </li>
+	                     <li <?php 
+		                        if(in_array($act,array('category','postcategory'))){ 
+		                    	   echo 'class="curr"';
+		                        }
+	                        ?> >
+	                        <a href="/<?php echo ADMIN_NAME;?>/index/category" >
+	                               <span>
+	                                                                              分类管理
+	                            </span>
+	                        </a>
+	                    </li>
+						
+					    <li <?php 
+		                        if(in_array($act,array('template','install_themep'))){ 
+		                    	   echo 'class="curr"';
+		                        }
+	                        ?> >
+	                        <a href="/<?php echo ADMIN_NAME;?>/index/template" >
+	                             <span>
+	                                                                             主题管理
+	                            </span>
+	                        </a>
+	                    </li>
+	                </ul>
+	
+	</div>
+   

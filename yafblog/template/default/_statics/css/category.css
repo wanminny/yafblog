@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* CSS Document */
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, lengend, button, input, textarea, th, td,table {  margin: 0px; padding: 0;border: 0;outline: 0;	font-size: 100%;vertical-align: baseline;-webkit-text-size-adjust:none;color:#6e6e6e;}
+h1, h2, h3{font-family:microsoft yahei,Arial,Helvetica,sans-serif;;}
+p{font-family:'Arial';}
+body,button, input, select, textarea,li,p,span { font: 12px/1 Arial,Helvetica,sans-serif; line-height:125%;}
+h1 { font-size: 18px;  }
+h2 { font-size: 16px; }
+h3 { font-size: 14px; }
+h4, h5, h6 { font-size: 100%; }
+p, h4, h5, h6{line-height:1.6em;}
+address, cite, dfn, em, var, i { font-style: normal; -webkit-text-size-adjust:none} 
+code, kbd, pre, samp, tt { font-family: "Courier New", Courier, monospace; } 
+small { font-size: 12px; } 
+ul, ol { list-style: none; }
+a { text-decoration: none; cursor:pointer;color: #3377AA;}
+a:hover { text-decoration: none; color:#fb7a33;}
+abbr[title], acronym[title] { 	border-bottom: 1px dotted;	cursor: help;}
+q:before, q:after { content: ''; }
+legend { color: #000; } 
+fieldset, img { border: none; } 
+button, input, select, textarea {    font-size: 100%; }
+table {	border-collapse: collapse;	border-spacing: 0;}
+hr {    border: none;    height: 1px;}
+.clear{clear:both;}
+.clear:after {content:".";height:0px;line-height:0px;visibility:hidden;clear:both;}
+.clearfix:after {display:block;	clear:both;	visibility:hidden;}
+.clearfix {display:inline-block;}
+
+
+/*-----------------------------------------------------------------------------------*/
+
+#root{ width:88%; height:auto; margin:auto; float:right; background:#FFF}
+#header{ width:100%; height:40px; background:#3377AA;}
+
+
+.mini_nav{ float:right; width:347px; height:10px;}
+.mini_nav a{ color:#FFF}
+.mini_nav ul{ margin:0px;}
+.mini_nav li{ float:left;  margin:10px;}
+
+
+#nav{ width:100%; height:29px;}
+#nav li{ float: left;height: 44px;line-height: 42px;text-align: center;width: 75px;}
+#nav li.curr{ background:#3377AA;}
+#nav li a{margin: 0 2px;padding: 0 2px; }
+#nav li a span{font-weight:900}
+#nav li.curr a{ color:#FFF;}
+
+#content{ width:100%; float:left; background:#FFF;margin-top: 48px;}
+#content .input-edit{ border:#CCC solid 1px; width:81%; height:50px; font-size:20px;margin: 0;}
+#content .input-button{ width:90px;  background:none repeat scroll 0 0 #3377AA; color:#FFF;height:52px}
+#content .lefts{ float:left}
+#content .input-w{ margin:10px}
+#content .input-w span{ margin:20px; float:left}
+#content .input-w .input-s{ position:relative;top:-52px; left:188px; };
+#content .block li{ float:left}
+
+#content .sidebar{ float:right;  padding-top: 20px;}
+#content .sidebar span{ font-weight:900;font-size: 20px;}
+#content .sidebar .block{ margin:10px}
+#content .sidebar .block li{ float:left}
+#content .sidebar .block li a{ font-size:20px;}
+#content .input-select{ width:200px; height:35px; font-size:20px; border:#999 solid 1px}
+
+#footer{ float:left; width:100%; height:40px; background:#3377AA;position:fixed;bottom:0}
+#footer p{ margin:10px;color:#FFF}
+
+
+
+#menu{ float:left; width:170px; min-height:800px;margin-top: 20px;}
+#menu li{  background: none repeat scroll 0 0 #EDEDED;cursor: pointer;float: left;height: 32px; margin-bottom: 5px; width: 140px;}
+#menu li a{ cursor: pointer;float: left;height: 32px;line-height: 35px; }
+#menu li span {cursor: pointer;float: left;height: 32px;line-height: 32px;padding-right: 50px;text-align: right;width: 90px;color:#333333; font-size:14px}
+
+.logo{ width:200px; float:left; margin:5px}

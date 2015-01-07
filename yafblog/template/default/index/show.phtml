@@ -1,0 +1,84 @@
+<?php $this->display("public/header.phtml");?>
+         <div id="content">
+         <div class="post">
+             
+             
+             <?php 
+             
+             
+             if(isset($r)){
+             
+             ?>
+             
+              <div class="content">
+                 
+                      <span class="title"><h2><a href=""><?php echo $r['post_title']?></a></h2></span> 
+                   
+                      <div class="meta">
+                      
+                      Write by <?php echo getAuthor(1);?> in 
+                    
+                      <?php 
+                           
+                      $ArrCat =  getCategory($r['ID']);
+                      
+                      foreach($ArrCat as $rs){
+                      
+                      ?>
+                      
+                           <a rel="category tag" title="<?php echo $rs['name']?>" href="/Index/index/category/id/<?php echo $rs['term_id']?>"><?php echo $rs['name']?></a>,
+                     <?php 
+                      }
+                      
+                      ?> at <?php echo $r['post_date']?> 
+                         <span class="full-screen"><a href="javascript:void(0)">[ 全屏阅读 ]</a></span>
+                      </div>
+                       
+                      
+                        
+                       <article class="article-content">
+                               <?php echo $r['post_content']?>
+                        </article>
+      
+              </div>
+              
+              <div id="comment">
+              
+                <!--高速版，加载速度快，使用前需测试页面的兼容性-->
+                <div id="SOHUCS"></div>
+                <script>
+                  (function(){
+                    var appid = 'cyr5CKxlz',
+                    conf = 'prod_3d43cb0230c4f1ab6b9700689a881ec5';
+                    var doc = document,
+                    s = doc.createElement('script'),
+                    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+                    s.type = 'text/javascript';
+                    s.charset = 'utf-8';
+                    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+                    h.insertBefore(s,h.firstChild);
+                    window.SCS_NO_IFRAME = true;
+                  })()
+                </script>   
+              
+              </div>
+              
+            <?php 
+            
+            
+              }else{
+            	
+            	  echo "<div class='message'>暂无文章</div>";
+            	
+              }
+             
+             ?>
+   
+          </div>
+          
+
+          <?php $this->display("public/sidebar.phtml");?>
+          
+                
+        </div>
+<?php $this->display("public/footer.phtml");?>

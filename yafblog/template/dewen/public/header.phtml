@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo load_config('system','charset')?>" />
+<title>
+<?php 
+
+if(isset($r) && $r['post_title']){
+	echo $r['post_title'].' - ';
+}
+echo load_config('system','site_name'); 
+?> 
+ - 
+<?php echo load_config('system','site_desc')?> -  Powered by YafBlog!
+</title>
+<meta name="keywords" content="<?php echo load_config('system','site_keywords');?>" />
+<meta name="description" content="<?php echo load_config('system','descript');?>" />
+
+<link href="<?php echo STATIC_TEMPLATE_PATCH;?>css/common.css?v=001" rel="stylesheet" type="text/css" />
+<link href="<?php echo ADMIN_STATIC_PATH;?>js/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet" type="text/css" />
+<script type="application/javascript" src="<?php echo ADMIN_STATIC_PATH;?>js/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
+<script type="application/javascript" src="<?php echo STATIC_TEMPLATE_PATCH;?>js/jquery-1.8.3.min.js"></script>
+<script type="application/javascript" src="<?php echo STATIC_TEMPLATE_PATCH;?>js/main.js"></script>
+<script>
+    SyntaxHighlighter.all() //执行代码高亮 
+</script>
+</head>
+<body >
+
+<div style="display:block;" class="tophead">
+			<i title="点击关闭"></i>
+			<div class="tophead_middle">
+				<!--<span><img src="static/images/activity/headtop_text.png"></span>-->
+			
+			</div>
+</div>
+
+<div id="header-wrap">
+
+	<div id="header-wrap-1">
+	<div class="logo"><a href="/"><?php echo load_config('system','site_name')?></a></div>
+	</div>
+	
+	<div class="header_right">
+		  <ul>
+			   
+			 
+			   <li ><a href="/"  <?php if(!isset($id)){?>class="thead curr"<?php }?> ><span>Home</span></a></li>
+			   
+			   <?php 
+				   
+				   if(isset($postModel)){
+   
+					   $arrpage = $postModel->select(array('post_type'=>'page','post_status'=>'publish'),'*','','post_date desc');
+					   if(count($arrpage) > 0){
+						   foreach ($arrpage as $page){
+						   ?>
+						   
+						   <li >
+								 <a href="page-<?php echo $page['ID']?>.html" <?php if(isset($id) && $page['ID'] == $id){?> class="thead curr" <?php }?>  ><span><?php echo $page['post_title']?></span></a>
+						   </li>
+						   
+						   <?php 
+						   }
+					   }
+				   }
+			   ?>
+		  </ul>
+	</div>
+	
+</div>

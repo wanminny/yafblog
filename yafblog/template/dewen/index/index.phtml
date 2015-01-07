@@ -1,0 +1,99 @@
+<?php $this->display("public/header.phtml");?>
+    
+<div id="root">
+
+        <div id="content">
+         <div class="post">
+         
+         
+            <?php 
+            
+            if(isset($data)){
+            
+                foreach($data as $row){
+            	
+              
+            ?>
+              <div class="list">
+                 
+                      <span class="title"><a href="show-<?php echo $row['ID']?>.html" title="<?php echo $row['post_title']?>"><?php echo $row['post_title']?></a>
+					  
+					  
+					  <?php
+                           $img = get_one_image($row['post_content']);
+                           if($img){
+						   
+						        echo '[图]';
+						   
+						   }						   
+ 
+                      ?>					  
+					  </span>
+                    
+                      <div class="meta">Write by admin in 
+                    
+                        
+                      
+                      <?php 
+                      	  
+                      foreach($cat_info[$row['ID']] as $r){
+					  
+                      ?>
+                      
+                           <a rel="category tag" title="<?php echo $r['name']?>" href="/Index/index/category/id/<?php echo $r['term_id']?>"><?php echo $r['name']?></a>,
+                     <?php 
+                      }
+                      
+                      ?> at <?php echo $row['post_date']?> 
+                      </div>
+                       
+                       <p class="desc"><?php echo str_cut(strip_tags($row['post_content']),500)?></p>
+                 
+              </div>
+              
+            <?php 
+       
+                         }
+                
+            }else{
+            	
+            	echo "<div class='message'>暂无文章</div>";
+            	
+            }
+            
+            ?>
+    
+              
+            <?php 
+            
+            //分页
+            if(isset($pages)){
+            
+            ?>
+              <div class="pagination">
+              
+                 <?php 
+                 
+                 
+                 echo $pages;
+                 
+                 ?>
+                  
+              </div>
+            <?php 
+       
+            }
+            
+            ?>
+              
+          </div>
+          
+
+               
+          <?php $this->display("public/sidebar.phtml");?>
+       
+    </div>
+</div>
+
+
+<?php $this->display("public/footer.phtml");?>

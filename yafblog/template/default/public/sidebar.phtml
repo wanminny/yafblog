@@ -1,0 +1,49 @@
+<div class="sidebar">
+
+		 <div class="block">
+				 <span>Category</span>  
+				 <ul>
+				 
+				 <?php 
+				 
+				 $CatM  = new CategoryModel(); 
+				 $data  = $CatM->getCategory();
+				 foreach ($data as $cat){
+				 
+				 ?>
+					
+					<li><a href="/Index/index/category/id/<?php echo $cat['term_id']?>"><?php echo $cat['name']?></a></li>
+					
+				 <?php 
+				 
+				 }
+				 
+				 ?>
+					
+				 </ul>      
+		 </div>  
+  
+  		 <div class="block">
+				 <span>Links</span>  
+				 <ul>
+				 
+				 <?php 
+				 
+				 $LinkM  = new LinksModel(); 
+				 $data  = $LinkM->select();
+				 foreach ($data as $link){
+				 
+				 ?>
+					
+					<li><a href="<?php echo $link['link_url']?>" title="<?php echo $link['link_name']?>"><?php echo $link['link_name']?></a></li>
+					
+				 <?php 
+				 
+				 }
+				 
+				 ?>
+					
+				 </ul>      
+		 </div>  
+          
+   </div> 

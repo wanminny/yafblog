@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo load_config('system','charset')?>" />
+<title>
+<?php 
+echo load_config('system','site_name'); 
+?> 后台管理 -  Powered by YafBlog!
+</title>
+<meta name="keywords" content="<?php echo load_config('system','keywords');?>" />
+<meta name="description" content="<?php echo load_config('system','descript');?>" />
+
+
+<link href="<?php echo ADMIN_STATIC_PATH;?>css/login.css?v=001" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+      
+   
+        <div class="header">
+             <span class="logo">YafBlog</span>
+        </div> 
+    
+        <div class="logo">
+              <img src="<?php echo ADMIN_STATIC_PATH;?>img/login_logo.png" />
+        </div>
+
+        <div class="error_msg">
+                  <span class="msg_title">提示:</span> <span class="msg">密码错误!</span>
+        </div>     
+        <div class="login">
+            
+              <div class="login-list">
+              <input type="text" name="username" class="username" placeholder="账号"/>
+              </div>
+              
+              <div class="login-list">
+              <input type="password" name="password" class="password" placeholder="密码"/>
+              </div>
+              
+              <div class="login-list">
+                  <input type="text" name="code" class="code" placeholder="验证码"/>
+                  <div class="code_diy">
+                      <img src="/<?php echo ucfirst(ADMIN_NAME);?>/login/checkcode?&code_len=4&font_size=20&width=115&height=43&font_color=&background="  onclick="this.src=this.src+'&'+Math.random()" />
+                  </div>
+              </div>
+
+         
+              <div class="login-list">
+                  <button  class="submit" onclick="return false"  >登录</button>
+             
+              </div>
+        
+        </div>
+        
+        
+        <div class="footer">
+                 <a href="http://www.yafblog.com">YafBlog</a> © Copyright 2014 - 由Yaf框架强力驱动
+        </div>
+   
+   
+   
+   <script>
+
+     var Admin = {};
+     Admin.module = '<?php echo ADMIN_NAME;?>';
+   
+   </script>
+   <script type="application/javascript" src="<?php echo ADMIN_STATIC_PATH;?>js/jquery-1.8.3.min.js"></script>
+   <script type="application/javascript" src="<?php echo ADMIN_STATIC_PATH;?>js/login.js"></script>
+</body>
+</html>

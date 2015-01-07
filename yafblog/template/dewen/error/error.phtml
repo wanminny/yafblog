@@ -1,0 +1,33 @@
+<?php $this->display("public/header.phtml");?>
+  
+    <div id="content">
+	
+           <div class="post">
+               
+            			   <div class='message'>
+						   
+						    <?php
+						    
+							if(DEBUG){
+							
+							    echo 'ERROR:'.$msg.'['.$code.']';
+							
+							}else{
+							
+							    echo '404';
+							 
+							}
+						   
+						    ?>
+						  
+						   
+						   
+						   </div>
+              
+          </div>
+         
+          <?php $this->display("public/sidebar.phtml");?>
+       
+    </div>
+    
+  <?php $this->display("public/footer.phtml");?>
